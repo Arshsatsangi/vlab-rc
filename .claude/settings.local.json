@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(openssl version *)",
+      "Bash(ipconfig getifaddr *)",
+      "Bash(npm --version)"
+    ]
+  }
+}
