@@ -25,7 +25,7 @@ export default function SceneCanvas({ canvasRef, ready, children }) {
   ].filter(Boolean)
 
   return (
-    <div className="relative min-w-0 flex-1 overflow-hidden bg-lab-bg">
+    <div className="relative min-w-0 flex-1 overflow-hidden bg-slate-50">
       {/* AR camera feed. Empty and invisible until a session mounts a <video>
           into it, and always behind the canvas, which clears transparent. */}
       <div
@@ -33,7 +33,7 @@ export default function SceneCanvas({ canvasRef, ready, children }) {
           arDom.videoLayer = el
         }}
         aria-hidden="true"
-        className="absolute inset-0 z-0 overflow-hidden bg-black"
+        className="absolute inset-0 z-0 overflow-hidden bg-slate-50"
         style={{ display: arActive ? 'block' : 'none' }}
       />
       {/* The canvas clears transparent, so the feed shows through it. Both layers
@@ -45,12 +45,12 @@ export default function SceneCanvas({ canvasRef, ready, children }) {
       />
 
       {/* status chip */}
-      <div className="pointer-events-none absolute left-4 top-4 z-20 flex items-center gap-2 rounded-full border border-lab-border bg-lab-panel/85 px-3 py-1.5 backdrop-blur">
+      <div className="pointer-events-none absolute left-4 top-4 z-20 flex items-center gap-2 rounded-full border border-lab-border bg-lab-panel/90 px-3 py-1.5 shadow-lip backdrop-blur">
         <span
           className={clsx('h-2 w-2 rounded-full', status.label === 'Running' && 'animate-pulse')}
           style={{ backgroundColor: status.color }}
         />
-        <span className="text-[11px] font-semibold text-white">{status.label}</span>
+        <span className="text-[11px] font-semibold text-lab-text">{status.label}</span>
       </div>
 
       {badges.length > 0 && (
@@ -68,7 +68,7 @@ export default function SceneCanvas({ canvasRef, ready, children }) {
 
       {children}
       {!ready && (
-        <div className="absolute inset-0 z-30 grid place-items-center bg-lab-bg">
+        <div className="absolute inset-0 z-30 grid place-items-center bg-slate-50">
           <div className="flex flex-col items-center gap-3">
             <span className="h-8 w-8 animate-spin rounded-full border-2 border-lab-border border-t-lab-blue" />
             <p className="text-[11px] uppercase tracking-[0.2em] text-lab-muted">

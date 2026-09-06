@@ -89,13 +89,13 @@ export default function ObservationTable() {
                               ? 'bg-lab-green/20 text-lab-green'
                               : r.status === 'DEFROST'
                                 ? 'bg-lab-amber/20 text-lab-amber'
-                                : 'bg-lab-border/60 text-gray-300'
+                                : 'bg-lab-card text-lab-muted'
                           }`}
                         >
                           {r.status}
                         </span>
                       ) : (
-                        <span className="lab-readout text-[12px] text-gray-200">{r[key]}</span>
+                        <span className="lab-readout text-[12px] text-lab-text">{r[key]}</span>
                       )}
                     </td>
                   ))}

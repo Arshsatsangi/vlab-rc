@@ -24,7 +24,7 @@ export default function VCRCycleFlow() {
   ]
 
   return (
-    <div className="absolute bottom-4 left-4 w-[212px] rounded-xl border border-lab-border bg-lab-panel/85 p-3 backdrop-blur">
+    <div className="absolute bottom-4 left-4 w-[212px] rounded-float border border-lab-border bg-lab-panel/90 p-3 shadow-lip backdrop-blur">
       <div className="flex items-center justify-between">
         <span className="lab-label">Refrigerant circuit</span>
         <span
@@ -52,17 +52,17 @@ export default function VCRCycleFlow() {
               >
                 {p.n}
               </span>
-              <span className="flex-1 truncate text-[10.5px] text-gray-300">{p.name}</span>
-              <span className="lab-readout text-[10px] text-gray-400">{p.t.toFixed(0)} °C</span>
+              <span className="flex-1 truncate text-[10.5px] text-lab-text">{p.name}</span>
+              <span className="lab-readout text-[10px] text-lab-muted">{p.t.toFixed(0)} °C</span>
             </button>
           </li>
         ))}
       </ul>
       <div className="mt-2 flex items-center gap-3 border-t border-lab-border/70 pt-2">
-        <span className="flex items-center gap-1.5 text-[9.5px] text-gray-400">
+        <span className="flex items-center gap-1.5 text-[9.5px] text-lab-muted">
           <span className="h-1.5 w-4 rounded-full bg-lab-hot" /> high pressure
         </span>
-        <span className="flex items-center gap-1.5 text-[9.5px] text-gray-400">
+        <span className="flex items-center gap-1.5 text-[9.5px] text-lab-muted">
           <span className="h-1.5 w-4 rounded-full bg-lab-blue" /> low pressure
         </span>
       </div>

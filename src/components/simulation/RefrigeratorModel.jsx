@@ -23,7 +23,7 @@ export default function RefrigeratorModel() {
   const isPowered = useLabStore((s) => s.isPowered)
 
   return (
-    <div className="absolute bottom-4 right-4 w-[204px] rounded-xl border border-lab-border bg-lab-panel/85 p-3 backdrop-blur">
+    <div className="absolute bottom-4 right-4 w-[204px] rounded-float border border-lab-border bg-lab-panel/90 p-3 shadow-lip backdrop-blur">
       <button
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between gap-2"
@@ -38,7 +38,7 @@ export default function RefrigeratorModel() {
           {construction.map(([k, v]) => (
             <div key={k}>
               <dt className="text-[9.5px] uppercase tracking-wide text-lab-muted">{k}</dt>
-              <dd className="lab-readout text-[10.5px] text-gray-300">{v}</dd>
+              <dd className="lab-readout text-[10.5px] text-lab-text">{v}</dd>
             </div>
           ))}
         </dl>

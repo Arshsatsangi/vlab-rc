@@ -8,7 +8,7 @@ export default function ManualNav({ pages, index, onSelect, onPrev, onNext }) {
     <div className="shrink-0 border-b border-lab-border bg-lab-panel/70 backdrop-blur">
       <div className="h-1 w-full bg-lab-card">
         <div
-          className="h-full bg-gradient-to-r from-lab-blue to-lab-cold transition-[width] duration-500"
+          className="h-full bg-lab-copper transition-[width] duration-500"
           style={{ width: `${pct}%` }}
           role="progressbar"
           aria-valuenow={index + 1}
@@ -28,17 +28,17 @@ export default function ManualNav({ pages, index, onSelect, onPrev, onNext }) {
                 className={clsx(
                   'flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[12px] transition-colors',
                   i === index
-                    ? 'bg-lab-blue/20 text-white ring-1 ring-lab-blue/60'
-                    : i < index
-                      ? 'text-lab-cold hover:bg-lab-card'
-                      : 'text-lab-muted hover:bg-lab-card hover:text-gray-300'
+                  ? 'bg-lab-copper/15 text-lab-copper ring-1 ring-lab-copper/40'
+                  : i < index
+                    ? 'text-lab-cold hover:bg-lab-card'
+                    : 'text-lab-muted hover:bg-lab-card hover:text-lab-text'
                 )}
               >
                 <span
                   className={clsx(
                     'grid h-5 w-5 place-items-center rounded-full text-[10px] font-bold',
                     i === index
-                      ? 'bg-lab-blue text-white'
+                      ? 'bg-lab-copper text-[#121815]'
                       : i < index
                         ? 'bg-lab-cold/25 text-lab-cold'
                         : 'bg-lab-card text-lab-muted'

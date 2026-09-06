@@ -5,7 +5,7 @@ export const componentInfo = {
   compressor: {
     label: 'Compressor',
     tag: 'Hermetically sealed reciprocating',
-    accent: '#ef4444',
+    accent: '#d2452c',
     description:
       'Hermetically sealed reciprocating compressor. It draws low-pressure refrigerant vapour from the evaporator and compresses it to a high pressure and temperature so that heat can be rejected in the condenser. The motor and cylinder are welded inside one steel dome, which is why it cannot be repaired in the field.',
     specs: [
@@ -22,7 +22,7 @@ export const componentInfo = {
   condenser: {
     label: 'Condenser',
     tag: 'Wire-and-tube, rear mounted',
-    accent: '#f97316',
+    accent: '#d2452c',
     description:
       'A natural-convection wire-and-tube condenser mounted on the back of the cabinet. High-pressure superheated vapour from the compressor rejects its heat to the room air and condenses into a high-pressure liquid. This is why the rear of a running refrigerator feels warm and needs clearance from the wall.',
     specs: [
@@ -39,7 +39,7 @@ export const componentInfo = {
   expansionValve: {
     label: 'Capillary Tube',
     tag: 'Throttling / expansion device',
-    accent: '#b87333',
+    accent: '#c48a4a',
     description:
       'A long, small-bore copper tube (typically 2–4 m long, 0.6–1.0 mm bore) that acts as the throttling device. It offers a fixed resistance which drops the refrigerant from condenser pressure to evaporator pressure. The process is irreversible and takes place at constant enthalpy, so temperature falls sharply and part of the liquid flashes to vapour.',
     specs: [
@@ -56,7 +56,7 @@ export const componentInfo = {
   evaporator: {
     label: 'Evaporator',
     tag: 'Freezer coil, direct cooling',
-    accent: '#06b6d4',
+    accent: '#4fa8c4',
     description:
       'Fitted at the top of the cabinet, forming the freezer compartment. The cold low-pressure refrigerant mixture absorbs latent heat from the cabinet air and food, producing the refrigerating effect, and leaves as vapour. Cold air sinks and warm air rises, setting up natural convection that cools the whole cabinet.',
     specs: [
@@ -73,7 +73,7 @@ export const componentInfo = {
   thermostat: {
     label: 'Thermostat Bulb',
     tag: 'Automatic temperature control',
-    accent: '#f59e0b',
+    accent: '#b9d3d6',
     description:
       'The sensing bulb of the thermostat, clamped to the evaporator surface. It controls the compressor ON/OFF cycles: when the evaporator is cold enough the contacts open and the compressor cuts out; when the cabinet warms by the differential the contacts close and the compressor cuts in again.',
     specs: [

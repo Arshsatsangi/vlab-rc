@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useLabStore, selectPower, selectRefrigerantState, selectStatus } from '../../store/labStore.js'
 
-function Cell({ label, value, unit, tone = 'text-white', sub }) {
+function Cell({ label, value, unit, tone = 'text-lab-text', sub }) {
   return (
     <div className="min-w-0 flex-1 border-r border-lab-border/70 px-4 py-2 last:border-r-0">
       <div className="truncate text-[10px] uppercase tracking-wider text-lab-muted">{label}</div>
@@ -24,7 +24,7 @@ export default function DataReadings() {
   const secs = Math.floor(s.elapsed % 60)
 
   return (
-    <div className="flex h-[68px] shrink-0 items-stretch overflow-x-auto border-t border-lab-border bg-lab-panel">
+    <div className="flex h-[68px] shrink-0 items-stretch overflow-x-auto border-t border-lab-border bg-lab-panel shadow-lip">
       <Cell
         label="Compressor inlet"
         value={s.suctionTemp.toFixed(1)}

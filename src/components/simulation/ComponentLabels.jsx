@@ -36,7 +36,7 @@ export default function ComponentLabels({ engineRef }) {
             onMouseEnter={() => hover(name)}
             onMouseLeave={() => hover(null)}
             style={{ borderColor: `${info.accent}88`, opacity: 0, left: 0, top: 0 }}
-            className="absolute flex items-center gap-1.5 whitespace-nowrap rounded-full border bg-lab-panel/90 px-2.5 py-1 text-[10.5px] font-semibold text-white backdrop-blur transition-opacity duration-200 hover:bg-lab-card"
+            className="absolute flex items-center gap-1.5 whitespace-nowrap rounded-full border border-lab-border bg-lab-panel/90 px-2.5 py-1 text-[10.5px] font-semibold text-lab-text shadow-lip backdrop-blur transition-all duration-200 hover:bg-lab-card"
           >
             <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: info.accent }} />
             {info.label}

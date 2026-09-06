@@ -1,16 +1,25 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0f1e" />
+    <meta name="theme-color" content="#121815" />
     <meta
       name="description"
       content="Virtual Refrigeration & Air Conditioning Lab — Experiment 1: Study of Household/Domestic Refrigerator"
     />
     <title>Virtual Refrigeration &amp; AC Lab</title>
+    <!-- Archivo: the lettering of appliance rating plates; IBM Plex Mono: the digits -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-[#0a0f1e]">
+  <!-- Inline colour, not a class: it paints before any stylesheet lands, so the
+       machine-room ground never flashes. -->
+  <body style="background: #121815">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

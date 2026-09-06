@@ -154,35 +154,35 @@ export const restartInstructions = [
 
 export const simulationGuide = [
   {
-    icon: '🖱️',
+    icon: 'cursor',
     title: 'Rotate the model',
     detail: 'Left-click and drag anywhere on the 3D view to orbit around the refrigerator.',
   },
   {
-    icon: '🔍',
+    icon: 'zoom',
     title: 'Zoom',
     detail: 'Scroll the mouse wheel (or pinch on a trackpad) to move closer or further away.',
   },
   {
-    icon: '👆',
+    icon: 'target',
     title: 'Inspect a component',
     detail:
       'Click the compressor, condenser, capillary tube, evaporator or thermostat bulb. The part is highlighted, the camera focuses on it and an information card opens.',
   },
   {
-    icon: '⚙️',
+    icon: 'power',
     title: 'Control panel (right)',
     detail:
       'Switch the unit ON/OFF, set the thermostat from 1 °C to 8 °C, trigger a defrost, change the refrigerant flow speed and toggle labels, X-ray and exploded views.',
   },
   {
-    icon: '📊',
+    icon: 'gauge',
     title: 'Live readings',
     detail:
       'Temperatures, pressures, refrigerant state, frost thickness and power draw update continuously while the simulation runs.',
   },
   {
-    icon: '📝',
+    icon: 'table',
     title: 'Observation table',
     detail:
       'Press "Record Reading" at intervals to build your lab record, then export it as a printable PDF for your journal.',

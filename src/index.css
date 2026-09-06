@@ -2,17 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Machine-room tokens. These mirror the `lab.*` scale in tailwind.config.js —
+ * the CSS custom properties exist for the few places that paint outside Tailwind
+ * (inline SVG, sliders, the reduced-motion guard).
+ */
 :root {
-  --bg-primary: #0a0f1e;
-  --bg-panel: #111827;
-  --bg-card: #1f2937;
-  --accent-blue: #3b82f6;
-  --accent-cold: #06b6d4;
-  --accent-hot: #ef4444;
-  --accent-green: #22c55e;
-  --text-primary: #f9fafb;
-  --text-muted: #6b7280;
-  --border: #374151;
+  --plant: #121815;
+  --panel: #1a211d;
+  --card: #212a25;
+  --border: #2c3831;
+  --enamel: #e8ebe4;
+  --muted: #8a9690;
+  --suction: #4fa8c4;
+  --discharge: #d2452c;
+  --copper: #c48a4a;
+  --frost: #b9d3d6;
 }
 
 * {
@@ -27,11 +32,25 @@ body,
 }
 
 body {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--plant);
+  color: var(--enamel);
+  font-family: 'Archivo', 'Helvetica Neue', system-ui, -apple-system, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
+}
+
+/* Rating-plate headings: tight, flat, never wider than the metal they sit on. */
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.02em;
+}
+
+/* The single focus language: a copper ring, like a test lamp on a live terminal. */
+:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
 }
 
 ::-webkit-scrollbar {
@@ -39,14 +58,14 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-panel);
+  background: var(--panel);
 }
 ::-webkit-scrollbar-thumb {
-  background: #374151;
-  border-radius: 4px;
+  background: var(--border);
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4b5563;
+  background: var(--muted);
 }
 
 canvas {
@@ -55,23 +74,55 @@ canvas {
 }
 
 @layer components {
+  /* A sheet of the console: flat metal, hairline edges, light catching the top. */
   .lab-panel {
-    @apply bg-lab-panel border border-lab-border rounded-xl;
+    @apply border border-lab-border bg-lab-panel shadow-lip;
   }
+  /* An instrument face: readings and small data surfaces. */
   .lab-card {
-    @apply bg-lab-card border border-lab-border rounded-lg;
+    @apply rounded-inst border border-lab-border bg-lab-card shadow-lip;
   }
   .lab-btn {
-    @apply px-3 py-2 rounded-lg text-sm font-medium border border-lab-border
-           bg-lab-card text-gray-300 transition-all duration-200
-           hover:border-lab-blue hover:text-white active:scale-[0.97]
-           disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-lab-border;
+    @apply rounded-ctl border border-lab-border bg-lab-panel px-3 py-2 text-[13px]
+           font-medium text-lab-enamel transition-colors duration-150
+           hover:border-lab-muted/60 hover:bg-lab-card
+           active:translate-y-px
+           disabled:translate-y-0 disabled:opacity-40 disabled:cursor-not-allowed
+           disabled:hover:border-lab-border disabled:hover:bg-lab-panel;
   }
+  /* Engaged: the copper terminal is live. */
   .lab-btn-active {
-    @apply bg-lab-blue/20 border-lab-blue text-white shadow-glow;
+    @apply border-lab-copper/70 bg-lab-copper/15 text-lab-copper
+           hover:border-lab-copper hover:bg-lab-copper/20 hover:text-lab-copper;
   }
+  /* Primary action: the copper terminal itself. A pass of light sweeps it
+     when engaged — the same sweep a chip gets when the thermostat changes. */
+  .lab-cta {
+    @apply relative inline-flex items-center gap-2 overflow-hidden rounded-ctl
+           bg-lab-copper px-6 py-3 text-[13px] font-semibold text-[#121815]
+           transition-[background-color,transform,box-shadow] duration-200
+           hover:-translate-y-px hover:bg-[#d49a5e] hover:shadow-copperGlow
+           active:translate-y-0 active:shadow-none;
+  }
+  .lab-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-130%) skewX(-18deg);
+    background: linear-gradient(
+      100deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 65%
+    );
+    transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  .lab-cta:hover::after {
+    transform: translateX(130%) skewX(-18deg);
+  }
+  /* Section heading: sentence case, over the section's hairline. */
   .lab-label {
-    @apply text-[11px] uppercase tracking-[0.14em] text-lab-muted font-semibold;
+    @apply text-[12.5px] font-semibold text-lab-enamel;
   }
   .lab-section {
     @apply border-b border-lab-border/70 px-4 py-4;
@@ -81,35 +132,94 @@ canvas {
   }
 }
 
-/* Range slider — cross-browser dark theme */
+/* ---- Frost gauge ---------------------------------------------------------- */
+/* The fill is a skin of ice: pale frost scratched with crystalline facets that
+   thicken as the layer grows, never a flat colour bar. */
+.frost-track {
+  @apply h-2 overflow-hidden rounded-inst bg-lab-card;
+}
+.frost-fill {
+  height: 100%;
+  background-color: rgba(185, 211, 214, 0.82);
+  background-image: repeating-linear-gradient(
+      115deg,
+      rgba(18, 24, 21, 0.3) 0 1px,
+      transparent 1px 5px
+    ),
+    repeating-linear-gradient(-65deg, rgba(255, 255, 255, 0.4) 0 1px, transparent 1px 7px);
+}
+/* The warm copper wash that travels the gauge while a defrost runs. */
+.frost-wash {
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(196, 138, 74, 0.9), transparent);
+  animation: sweep 1.4s ease-in-out infinite;
+}
+
+/* ---- Landing hero ---------------------------------------------------------- */
+/* The headline as a machined nameplate: enamel with one warm band of light. */
+.text-metal {
+  background-image: linear-gradient(
+    105deg,
+    #dfe3da 0%,
+    var(--enamel) 32%,
+    #f4e3c2 50%,
+    var(--enamel) 68%,
+    #dfe3da 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* Frost motes rising off the coil: transform/opacity only, so they stay on the
+   compositor thread — and the reduced-motion guard below stills them entirely. */
+.frost-mote {
+  position: absolute;
+  bottom: -8px;
+  border-radius: 9999px;
+  background: var(--frost);
+  box-shadow: 0 0 6px 1px rgba(185, 211, 214, 0.55);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* ---- Range slider — the thermostat dial ----------------------------------- */
 input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 6px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
   outline: none;
 }
 input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 18px;
+  width: 12px;
   height: 18px;
-  border-radius: 50%;
-  background: #f9fafb;
-  border: 3px solid #3b82f6;
+  border-radius: 2px;
+  background: var(--enamel);
+  border: 1px solid var(--plant);
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
 }
 input[type='range']::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #f9fafb;
-  border: 3px solid #3b82f6;
+  width: 12px;
+  height: 18px;
+  border-radius: 2px;
+  background: var(--enamel);
+  border: 1px solid var(--plant);
   cursor: pointer;
 }
 
-.label-connector {
-  background: linear-gradient(90deg, rgba(59, 130, 246, 0.9), rgba(59, 130, 246, 0.1));
+/* Motion answers actions or reports state; never decoration for its own sake.
+   Reduced motion leaves every element in its static end state. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

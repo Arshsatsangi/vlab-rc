@@ -27,8 +27,9 @@ export default function Tooltip({ label, children, side = 'top', className }) {
           role="tooltip"
           id={id}
           className={clsx(
-            'pointer-events-none absolute z-50 w-max max-w-[220px] rounded-md border border-lab-border',
-            'bg-lab-card px-2.5 py-1.5 text-[11px] leading-snug text-gray-200 shadow-panel',
+            'pointer-events-none absolute z-50 w-max max-w-[220px] rounded-inst border border-lab-border',
+            'bg-lab-card px-2.5 py-1.5 text-[11px] leading-snug text-lab-enamel shadow-stage',
+            'animate-rise',
             pos
           )}
         >

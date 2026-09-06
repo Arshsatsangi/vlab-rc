@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { statusTone } from '../theme/tone.js'
 
 export const ROOM_TEMP = 25
 export const DIFFERENTIAL = 6
@@ -248,11 +249,20 @@ export const useLabStore = create((set, get) => ({
 }))
 
 // ---- Derived selectors ----
+/**
+ * Machine state, with its colour taken from the one palette that defines them
+ * (Readout.jsx). Returning the hex from here rather than re-declaring it means
+ * the status chip, the AR HUD and the observation table cannot drift apart.
+ */
 export const selectStatus = (s) => {
-  if (s.isDefrosting) return { label: 'Defrosting', color: '#f59e0b' }
-  if (!s.isPowered) return { label: 'Off', color: '#6b7280' }
-  if (s.compressorOn) return { label: 'Running', color: '#22c55e' }
-  return { label: 'Idle (cut-out)', color: '#f59e0b' }
+  const label = s.isDefrosting
+    ? 'Defrosting'
+    : !s.isPowered
+      ? 'Off'
+      : s.compressorOn
+        ? 'Running'
+        : 'Idle (cut-out)'
+  return { label, color: statusTone(label) }
 }
 
 // Compressor ≈150 W; interior lamp 15 W when the door is open;

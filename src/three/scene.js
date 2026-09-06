@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { attachResize } from './helpers.js'
 
-export const BG_COLOR = 0x0a0f1e
+export const BG_COLOR = 0x121815
 
 /**
  * Create renderer, scene, camera, lights, ground and controls for the lab view.

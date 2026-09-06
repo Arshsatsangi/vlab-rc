@@ -38,7 +38,7 @@ function Check({ label, checked, onChange, hint }) {
         className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-lab-blue"
       />
       <span className="leading-tight">
-        <span className="text-[12.5px] text-gray-200">{label}</span>
+        <span className="text-[12.5px] text-lab-text">{label}</span>
         {hint && <span className="block text-[10.5px] text-lab-muted">{hint}</span>}
       </span>
     </label>
@@ -51,7 +51,7 @@ export default function ControlPanel({ onOpenTable, onReset, engineRef }) {
   const frostPct = Math.round(s.frostThickness * 100)
 
   return (
-    <aside className="flex w-[288px] shrink-0 flex-col overflow-y-auto border-l border-lab-border bg-lab-panel">
+    <aside className="flex w-[288px] shrink-0 flex-col overflow-y-auto border-l border-lab-border bg-lab-panel shadow-lip">
       {/* ---- Power ---- */}
       <Section
         title="Power supply"
@@ -75,7 +75,7 @@ export default function ControlPanel({ onOpenTable, onReset, engineRef }) {
           <button
             onClick={s.stopRefrigerator}
             disabled={!s.isPowered}
-            className={clsx('lab-btn', !s.isPowered && 'border-lab-hot/60 text-lab-hot')}
+            className={clsx('lab-btn', !s.isPowered && 'border-red-200 text-red-600')}
           >
             ⏼ OFF
           </button>
@@ -111,7 +111,7 @@ export default function ControlPanel({ onOpenTable, onReset, engineRef }) {
         <div className="mt-3 grid grid-cols-2 gap-2">
           <div className="lab-card px-3 py-2">
             <div className="text-[10px] text-lab-muted">Cabinet now</div>
-            <div className="lab-readout mt-0.5 text-lg font-semibold text-white">
+            <div className="lab-readout mt-0.5 text-lg font-semibold text-lab-text">
               {s.cabinetTemp.toFixed(1)} °C
             </div>
           </div>

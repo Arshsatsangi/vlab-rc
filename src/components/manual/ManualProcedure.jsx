@@ -23,9 +23,9 @@ export default function ManualProcedure() {
       transition={{ duration: 0.35 }}
       className="mx-auto max-w-4xl space-y-4"
     >
-      <section className="lab-panel px-7 py-5 shadow-panel">
-        <h2 className="text-xl font-bold text-white">Thermostat — automatic temperature control</h2>
-        <p className="mt-3 text-[15px] leading-relaxed text-gray-300">{thermostatInfo.working}</p>
+      <section className="lab-panel px-7 py-5 shadow-stage">
+        <h2 className="text-xl font-bold text-lab-enamel">Thermostat — automatic temperature control</h2>
+        <p className="mt-3 text-[15px] leading-relaxed text-lab-text">{thermostatInfo.working}</p>
         <div className="mt-4 grid gap-2 sm:grid-cols-3">
           {[
             ['Cut-in', `${thermostatInfo.cutIn} °C`, 'text-lab-amber'],
@@ -38,20 +38,20 @@ export default function ManualProcedure() {
             </div>
           ))}
         </div>
-        <div className="mt-5 rounded-xl bg-lab-bg/60 p-3">
+        <div className="mt-5 rounded-float bg-lab-bg/60 p-3">
           <ThermostatDiagram />
         </div>
         <p className="mt-3 text-[13px] leading-relaxed text-lab-muted">{thermostatInfo.note}</p>
       </section>
 
-      <section className="lab-panel px-7 py-5 shadow-panel">
-        <h2 className="text-xl font-bold text-white">Bimetal thermostat</h2>
-        <p className="mt-3 text-[15px] leading-relaxed text-gray-300">{thermostatInfo.bimetal}</p>
+      <section className="lab-panel px-7 py-5 shadow-stage">
+        <h2 className="text-xl font-bold text-lab-enamel">Bimetal thermostat</h2>
+        <p className="mt-3 text-[15px] leading-relaxed text-lab-text">{thermostatInfo.bimetal}</p>
       </section>
 
-      <section className="lab-panel px-7 py-5 shadow-panel">
-        <h2 className="text-xl font-bold text-white">Defrosting</h2>
-        <p className="mt-3 text-[15px] leading-relaxed text-gray-300">{defrostInfo.why}</p>
+      <section className="lab-panel px-7 py-5 shadow-stage">
+        <h2 className="text-xl font-bold text-lab-enamel">Defrosting</h2>
+        <p className="mt-3 text-[15px] leading-relaxed text-lab-text">{defrostInfo.why}</p>
         <div className="mt-4 space-y-2">
           {defrostInfo.methods.map((m, i) => (
             <div key={m.name} className="lab-card px-4 py-3">
@@ -59,19 +59,19 @@ export default function ManualProcedure() {
                 <span className="grid h-5 w-5 place-items-center rounded-full bg-lab-blue/25 text-[10px] font-bold text-lab-blue">
                   {i + 1}
                 </span>
-                <h3 className="text-sm font-semibold text-white">{m.name}</h3>
+                <h3 className="text-sm font-semibold text-lab-enamel">{m.name}</h3>
               </div>
-              <p className="mt-1.5 pl-7 text-[13px] leading-relaxed text-gray-300">{m.detail}</p>
+              <p className="mt-1.5 pl-7 text-[13px] leading-relaxed text-lab-text">{m.detail}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="lab-panel px-7 py-5 shadow-panel">
-        <h2 className="text-xl font-bold text-white">Procedure</h2>
+      <section className="lab-panel px-7 py-5 shadow-stage">
+        <h2 className="text-xl font-bold text-lab-enamel">Procedure</h2>
         <ol className="mt-3 space-y-2.5">
           {procedure.map((step, i) => (
-            <li key={i} className="flex gap-3 text-[14px] leading-relaxed text-gray-300">
+            <li key={i} className="flex gap-3 text-[14px] leading-relaxed text-lab-text">
               <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-lab-card text-[11px] font-bold text-lab-cold ring-1 ring-lab-border">
                 {i + 1}
               </span>

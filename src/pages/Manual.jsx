@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import Navbar from '../components/ui/Navbar.jsx'
 import ManualNav from '../components/manual/ManualNav.jsx'
 import ManualCover from '../components/manual/ManualCover.jsx'
 import ManualTheory from '../components/manual/ManualTheory.jsx'
@@ -37,14 +36,7 @@ export default function Manual() {
   const page = pages[index].id
 
   return (
-    <div className="flex h-screen flex-col bg-lab-bg">
-      <Navbar
-        right={
-          <button onClick={start} className="lab-btn lab-btn-active ml-2">
-            ▶ Simulation
-          </button>
-        }
-      />
+    <>
       <ManualNav pages={pages} index={index} onSelect={setIndex} onPrev={prev} onNext={next} />
       <main className="flex-1 overflow-y-auto px-4 py-5">
         <AnimatePresence mode="wait">
@@ -73,6 +65,6 @@ export default function Manual() {
           )}
         </div>
       </main>
-    </div>
+    </>
   )
 }
